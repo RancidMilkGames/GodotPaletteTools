@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://x40sgfxkrskd"]
+
+[ext_resource type="Texture2D" uid="uid://cx00v0wt38na5" path="res://addons/PaletteTools/Images/Plus.png" id="1_o5f0x"]
+
+[node name="ColorSample" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Color" type="TextureButton" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Add color to palette"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_o5f0x")
+ignore_texture_size = true
+stretch_mode = 4

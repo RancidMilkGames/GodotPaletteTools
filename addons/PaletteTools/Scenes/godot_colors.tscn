@@ -1,0 +1,402 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="Script" path="res://addons/PaletteTools/scripts/colors_tool.gd" id="1_cka1d"]
+[ext_resource type="Script" path="res://addons/PaletteTools/scripts/get_from_url.gd" id="2_h7jir"]
+[ext_resource type="Texture2D" uid="uid://ua52pdokny1t" path="res://addons/PaletteTools/Images/spyglass.png" id="3_0dv62"]
+[ext_resource type="Texture2D" uid="uid://cx00v0wt38na5" path="res://addons/PaletteTools/Images/Plus.png" id="3_37je3"]
+
+[sub_resource type="Theme" id="Theme_mrffm"]
+MarginContainer/constants/margin_bottom = 3
+MarginContainer/constants/margin_left = 3
+MarginContainer/constants/margin_right = 3
+MarginContainer/constants/margin_top = 3
+TextEdit/font_sizes/font_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_85bry"]
+font_size = 48
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0prwo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g87e"]
+bg_color = Color(0.839216, 0.839216, 0.839216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xqr"]
+bg_color = Color(0.839216, 0.839216, 0.839216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0opjw"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ky7b"]
+bg_color = Color(0.92549, 0.85098, 0.596078, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opt6l"]
+bg_color = Color(0.415686, 0.415686, 0.415686, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wa6o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpuxu"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.933333, 0.772549, 0.509804, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nll3k"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_orkym"]
+font_size = 14
+font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tawqj"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_ec4by"]
+font_size = 32
+
+[node name="Palette Tools" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Colors" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(300, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_mrffm")
+script = ExtResource("1_cka1d")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Colors"]
+download_file = "res://addons/PaletteTools/temp_palette.txt"
+script = ExtResource("2_h7jir")
+
+[node name="Palette" type="VBoxContainer" parent="Colors"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -115.0
+offset_right = 150.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Colors/Palette"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Palette Tools"
+label_settings = SubResource("LabelSettings_85bry")
+horizontal_alignment = 1
+
+[node name="PaletteList" type="Label" parent="Colors/Palette"]
+layout_mode = 2
+text = "Saved Palettes:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SavedPalettes" type="ItemList" parent="Colors/Palette"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_selected_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0prwo")
+theme_override_styles/selected = SubResource("StyleBoxFlat_1g87e")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_e8xqr")
+auto_height = true
+item_count = 1
+same_column_width = true
+item_0/text = "No Palettes"
+
+[node name="IO" type="HBoxContainer" parent="Colors/Palette"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="New" type="TextureButton" parent="Colors/Palette/IO"]
+self_modulate = Color(0.720467, 0.720468, 0.720467, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Make a new palette. Erases current preview"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_37je3")
+texture_pressed = ExtResource("3_37je3")
+texture_hover = ExtResource("3_37je3")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Load" type="Button" parent="Colors/Palette/IO"]
+layout_mode = 2
+tooltip_text = "Load selected Saved Palette"
+mouse_default_cursor_shape = 2
+text = "Load"
+
+[node name="Delete" type="Button" parent="Colors/Palette/IO"]
+layout_mode = 2
+tooltip_text = "Delete selected Saved Palette"
+mouse_default_cursor_shape = 2
+text = "Delete"
+
+[node name="SearchTitle" type="Label" parent="Colors/Palette"]
+layout_mode = 2
+text = "Get palette from URL:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Search" type="HBoxContainer" parent="Colors/Palette"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Search" type="Button" parent="Colors/Palette/Search"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0opjw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ky7b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_opt6l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1wa6o")
+icon = ExtResource("3_0dv62")
+icon_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Colors/Palette/Search"]
+custom_minimum_size = Vector2(272, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "URL"
+alignment = 1
+expand_to_text_length = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Preview" type="Label" parent="Colors/Palette"]
+layout_mode = 2
+text = "Palette Preview:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Colors/Palette"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="PaletteName" type="HBoxContainer" parent="Colors/Palette/Info"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Colors/Palette/Info/PaletteName"]
+layout_mode = 2
+text = "Palette Name:"
+
+[node name="LineEdit" type="LineEdit" parent="Colors/Palette/Info/PaletteName"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Name"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Author" type="HBoxContainer" parent="Colors/Palette/Info"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Colors/Palette/Info/Author"]
+layout_mode = 2
+text = "Author:"
+
+[node name="LineEdit" type="LineEdit" parent="Colors/Palette/Info/Author"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Name"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="ColorPreview" type="GridContainer" parent="Colors/Palette"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="Save" type="Button" parent="Colors/Palette"]
+layout_mode = 2
+tooltip_text = "Save the current preview to Saved Palettes"
+mouse_default_cursor_shape = 2
+text = "Save Palette"
+
+[node name="Container" type="MarginContainer" parent="Colors/Palette"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="Colors/Palette/Container"]
+layout_mode = 2
+color = Color(0.878431, 0.870588, 0.658824, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Colors/Palette/Container"]
+layout_mode = 2
+
+[node name="SaveToEditor" type="VBoxContainer" parent="Colors/Palette/Container/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Spacer" type="Control" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SaveToEditorButton" type="Button" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Replaces the current editor swatches with current palette"
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.933333, 0.772549, 0.509804, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tpuxu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nll3k")
+text = "*Save to Editor's Swatches"
+
+[node name="Label" type="Label" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
+layout_mode = 2
+text = "*Note: Editor must be restarted
+for changes to take effect"
+label_settings = SubResource("LabelSettings_orkym")
+horizontal_alignment = 1
+
+[node name="RestartEditor" type="VBoxContainer" parent="Colors/Palette/Container/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="RestartEditorButton" type="Button" parent="Colors/Palette/Container/VBoxContainer/RestartEditor"]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Replaces the current editor swatches with current palette"
+theme_override_colors/font_color = Color(1, 0.435294, 0.364706, 1)
+text = "*Restart To finalize changes?"
+
+[node name="PopupPanel" type="PopupPanel" parent="Colors"]
+initial_position = 1
+title = "Alert"
+size = Vector2i(500, 300)
+current_screen = -2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tawqj")
+
+[node name="Control" type="Control" parent="Colors/PopupPanel"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -785.0
+offset_bottom = -425.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Colors/PopupPanel/Control"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -13.0
+offset_right = 0.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Alert"
+label_settings = SubResource("LabelSettings_ec4by")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="Colors/PopupPanel/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -42.0
+offset_right = 25.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Close"
+
+[node name="ColorPickerPopup" type="PopupPanel" parent="Colors"]
+initial_position = 1
+size = Vector2i(298, 576)
+current_screen = -2
+
+[node name="ColorPicker" type="ColorPicker" parent="Colors/ColorPickerPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 294.0
+offset_bottom = 572.0
+picker_shape = 2
+
+[connection signal="request_completed" from="Colors/HTTPRequest" to="Colors/HTTPRequest" method="_on_request_completed"]
+[connection signal="pressed" from="Colors/Palette/IO/New" to="Colors" method="_on_new_palette_pressed"]
+[connection signal="pressed" from="Colors/Palette/IO/Load" to="Colors" method="_on_load_palette_pressed"]
+[connection signal="pressed" from="Colors/Palette/IO/Delete" to="Colors" method="_on_delete_palette_pressed"]
+[connection signal="pressed" from="Colors/Palette/Search/Search" to="Colors" method="_on_search_pressed"]
+[connection signal="text_submitted" from="Colors/Palette/Search/LineEdit" to="Colors" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Colors/Palette/Save" to="Colors" method="_on_save_palette_pressed"]
+[connection signal="pressed" from="Colors/Palette/Container/VBoxContainer/SaveToEditor/SaveToEditorButton" to="Colors" method="_on_save_to_editor_button_pressed"]
+[connection signal="pressed" from="Colors/Palette/Container/VBoxContainer/RestartEditor/RestartEditorButton" to="Colors" method="_on_restart_editor_pressed"]
+[connection signal="pressed" from="Colors/PopupPanel/Control/CloseButton" to="Colors" method="_on_popup_close_button_pressed"]
+[connection signal="color_changed" from="Colors/ColorPickerPopup/ColorPicker" to="Colors" method="_on_color_picker_color_changed"]
