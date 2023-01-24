@@ -1,37 +1,37 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=20 format=3 uid="uid://4ogg0v6w1ju"]
 
 [ext_resource type="Script" path="res://addons/PaletteTools/scripts/colors_tool.gd" id="1_cka1d"]
 [ext_resource type="Script" path="res://addons/PaletteTools/scripts/get_from_url.gd" id="2_h7jir"]
 [ext_resource type="Texture2D" uid="uid://ua52pdokny1t" path="res://addons/PaletteTools/Images/spyglass.png" id="3_0dv62"]
 [ext_resource type="Texture2D" uid="uid://cx00v0wt38na5" path="res://addons/PaletteTools/Images/Plus.png" id="3_37je3"]
 
-[sub_resource type="Theme" id="Theme_mrffm"]
+[sub_resource type="Theme" id="Theme_ci412"]
 MarginContainer/constants/margin_bottom = 3
 MarginContainer/constants/margin_left = 3
 MarginContainer/constants/margin_right = 3
 MarginContainer/constants/margin_top = 3
 TextEdit/font_sizes/font_size = 16
 
-[sub_resource type="LabelSettings" id="LabelSettings_85bry"]
+[sub_resource type="LabelSettings" id="LabelSettings_m406i"]
 font_size = 48
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0prwo"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4pm7x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g87e"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro6bc"]
 bg_color = Color(0.839216, 0.839216, 0.839216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xqr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxcr4"]
 bg_color = Color(0.839216, 0.839216, 0.839216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0opjw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7s3nu"]
 draw_center = false
 border_width_left = 2
 border_width_top = 2
@@ -42,23 +42,23 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ky7b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57ndo"]
 bg_color = Color(0.92549, 0.85098, 0.596078, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opt6l"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkeys"]
 bg_color = Color(0.415686, 0.415686, 0.415686, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wa6o"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqmsu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpuxu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xiliw"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 border_width_left = 2
 border_width_top = 2
@@ -70,18 +70,25 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nll3k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p24k"]
 bg_color = Color(0.333333, 0.333333, 0.333333, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_orkym"]
+[sub_resource type="LabelSettings" id="LabelSettings_5ifbe"]
 font_size = 14
 font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tawqj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gktnw"]
+bg_color = Color(0.172549, 0.172549, 0.172549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jggyy"]
 bg_color = Color(0.160784, 0.160784, 0.160784, 1)
 border_width_left = 5
 border_width_top = 5
@@ -92,7 +99,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="LabelSettings" id="LabelSettings_ec4by"]
+[sub_resource type="LabelSettings" id="LabelSettings_lif4d"]
 font_size = 32
 
 [node name="Palette Tools" type="ScrollContainer"]
@@ -108,7 +115,7 @@ custom_minimum_size = Vector2(300, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_mrffm")
+theme = SubResource("Theme_ci412")
 script = ExtResource("1_cka1d")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Colors"]
@@ -134,7 +141,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Palette Tools"
-label_settings = SubResource("LabelSettings_85bry")
+label_settings = SubResource("LabelSettings_m406i")
 horizontal_alignment = 1
 
 [node name="PaletteList" type="Label" parent="Colors/Palette"]
@@ -148,9 +155,9 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_selected_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0prwo")
-theme_override_styles/selected = SubResource("StyleBoxFlat_1g87e")
-theme_override_styles/selected_focus = SubResource("StyleBoxFlat_e8xqr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4pm7x")
+theme_override_styles/selected = SubResource("StyleBoxFlat_ro6bc")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_uxcr4")
 auto_height = true
 item_count = 1
 same_column_width = true
@@ -200,10 +207,10 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_0opjw")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2ky7b")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_opt6l")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1wa6o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7s3nu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_57ndo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mkeys")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jqmsu")
 icon = ExtResource("3_0dv62")
 icon_alignment = 1
 
@@ -297,15 +304,15 @@ size_flags_horizontal = 4
 tooltip_text = "Replaces the current editor swatches with current palette"
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.933333, 0.772549, 0.509804, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_tpuxu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nll3k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xiliw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3p24k")
 text = "*Save to Editor's Swatches"
 
 [node name="Label" type="Label" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
 layout_mode = 2
 text = "*Note: Editor must be restarted
 for changes to take effect"
-label_settings = SubResource("LabelSettings_orkym")
+label_settings = SubResource("LabelSettings_5ifbe")
 horizontal_alignment = 1
 
 [node name="RestartEditor" type="VBoxContainer" parent="Colors/Palette/Container/VBoxContainer"]
@@ -319,14 +326,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Replaces the current editor swatches with current palette"
 theme_override_colors/font_color = Color(1, 0.435294, 0.364706, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_gktnw")
 text = "*Restart To finalize changes?"
+
+[node name="Spacer" type="Control" parent="Colors/Palette/Container/VBoxContainer/RestartEditor"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="PopupPanel" type="PopupPanel" parent="Colors"]
 initial_position = 1
 title = "Alert"
 size = Vector2i(500, 300)
 current_screen = -2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tawqj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jggyy")
 
 [node name="Control" type="Control" parent="Colors/PopupPanel"]
 layout_mode = 3
@@ -335,8 +347,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = 5.0
-offset_right = -785.0
-offset_bottom = -425.0
+offset_right = -657.0
+offset_bottom = -353.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -355,7 +367,7 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Alert"
-label_settings = SubResource("LabelSettings_ec4by")
+label_settings = SubResource("LabelSettings_lif4d")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

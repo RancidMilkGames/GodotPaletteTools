@@ -118,8 +118,11 @@ func _on_restart_editor_pressed():
 
 
 func _on_search_pressed():
-	popup.get_child(0).get_child(0).text = "Please enter a URL"
-	popup.show()
+	if url.text.length() > 0:
+		http.get_palette(url.text)
+	else:
+		popup.get_child(0).get_child(0).text = "Please enter a URL"
+		popup.show()
 
 
 func _on_save_palette_pressed():
