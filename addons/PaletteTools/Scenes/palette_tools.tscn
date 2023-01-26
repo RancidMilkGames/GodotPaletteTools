@@ -1,37 +1,44 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxxyqy8lomgtg"]
+[gd_scene load_steps=22 format=3 uid="uid://3m5qn5hayqy3"]
 
-[ext_resource type="Script" path="res://addons/PaletteTools/scripts/palette_tool.gd" id="1_o3coj"]
-[ext_resource type="Script" path="res://addons/PaletteTools/scripts/get_from_url.gd" id="2_hjaf0"]
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/palette_tool.gd" id="1_1r4u3"]
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/get_from_url.gd" id="2_4p84m"]
+[ext_resource type="Shader" path="res://addons/PaletteTools/Shaders/rainbow_shader.gdshader" id="3_gaxkd"]
 [ext_resource type="Texture2D" uid="uid://cx00v0wt38na5" path="res://addons/PaletteTools/Images/Plus.png" id="3_m16i6"]
 [ext_resource type="Texture2D" uid="uid://ua52pdokny1t" path="res://addons/PaletteTools/Images/spyglass.png" id="4_7wo4d"]
 
-[sub_resource type="Theme" id="Theme_u3ywn"]
+[sub_resource type="Theme" id="Theme_mgr8x"]
 MarginContainer/constants/margin_bottom = 3
 MarginContainer/constants/margin_left = 3
 MarginContainer/constants/margin_right = 3
 MarginContainer/constants/margin_top = 3
 TextEdit/font_sizes/font_size = 16
 
-[sub_resource type="LabelSettings" id="LabelSettings_rxi86"]
-font_size = 48
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkcdi"]
+shader = ExtResource("3_gaxkd")
+shader_parameter/strength = 0.25
+shader_parameter/speed = 0.25
+shader_parameter/angle = 0.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04sx7"]
+[sub_resource type="LabelSettings" id="LabelSettings_2bogt"]
+font_size = 40
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwy7s"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_du6ib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6ycd"]
 bg_color = Color(0.839216, 0.839216, 0.839216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvsw1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mup8"]
 bg_color = Color(0.839216, 0.839216, 0.839216, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdvkb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bed1e"]
 draw_center = false
 border_width_left = 2
 border_width_top = 2
@@ -42,23 +49,23 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjhfe"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsm3i"]
 bg_color = Color(0.92549, 0.85098, 0.596078, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sore1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8upbj"]
 bg_color = Color(0.415686, 0.415686, 0.415686, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vifs5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jb44t"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlud"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx1ug"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 border_width_left = 2
 border_width_top = 2
@@ -70,25 +77,25 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfoxv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhes2"]
 bg_color = Color(0.333333, 0.333333, 0.333333, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_uyocs"]
+[sub_resource type="LabelSettings" id="LabelSettings_mx500"]
 font_size = 14
 font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xo1r3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2ltd"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30mo1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or54x"]
 bg_color = Color(0.160784, 0.160784, 0.160784, 1)
 border_width_left = 5
 border_width_top = 5
@@ -99,7 +106,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="LabelSettings" id="LabelSettings_5c0f0"]
+[sub_resource type="LabelSettings" id="LabelSettings_j2aow"]
 font_size = 32
 
 [node name="Palette Tools" type="ScrollContainer"]
@@ -121,22 +128,23 @@ custom_minimum_size = Vector2(300, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_u3ywn")
-script = ExtResource("1_o3coj")
+theme = SubResource("Theme_mgr8x")
+script = ExtResource("1_1r4u3")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Colors"]
 download_file = "res://addons/PaletteTools/temp_palette.txt"
-script = ExtResource("2_hjaf0")
+script = ExtResource("2_4p84m")
 
 [node name="Palette" type="VBoxContainer" parent="Colors"]
 layout_mode = 2
 alignment = 1
 
 [node name="Title" type="Label" parent="Colors/Palette"]
+material = SubResource("ShaderMaterial_gkcdi")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Palette Tools"
-label_settings = SubResource("LabelSettings_rxi86")
+label_settings = SubResource("LabelSettings_2bogt")
 horizontal_alignment = 1
 
 [node name="PaletteList" type="Label" parent="Colors/Palette"]
@@ -150,13 +158,14 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_selected_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_04sx7")
-theme_override_styles/selected = SubResource("StyleBoxFlat_dwy7s")
-theme_override_styles/selected_focus = SubResource("StyleBoxFlat_nvsw1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_du6ib")
+theme_override_styles/selected = SubResource("StyleBoxFlat_d6ycd")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_2mup8")
 auto_height = true
-item_count = 1
+item_count = 2
 same_column_width = true
-item_0/text = "No Palettes"
+item_0/text = "Nanner 2022"
+item_1/text = "pastel-16"
 
 [node name="IO" type="HBoxContainer" parent="Colors/Palette"]
 custom_minimum_size = Vector2(300, 0)
@@ -202,10 +211,10 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gdvkb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gjhfe")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_sore1")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vifs5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bed1e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fsm3i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8upbj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jb44t")
 icon = ExtResource("4_7wo4d")
 icon_alignment = 1
 
@@ -301,15 +310,15 @@ size_flags_horizontal = 4
 tooltip_text = "Replaces the current editor swatches with current palette"
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.933333, 0.772549, 0.509804, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_5hlud")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cfoxv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mx1ug")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhes2")
 text = "*Save to Editor's Swatches"
 
 [node name="Label" type="Label" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
 layout_mode = 2
 text = "*Note: Editor must be restarted
 for changes to take effect"
-label_settings = SubResource("LabelSettings_uyocs")
+label_settings = SubResource("LabelSettings_mx500")
 horizontal_alignment = 1
 
 [node name="RestartEditor" type="VBoxContainer" parent="Colors/Palette/Container/VBoxContainer"]
@@ -323,7 +332,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Replaces the current editor swatches with current palette"
 theme_override_colors/font_color = Color(1, 0.435294, 0.364706, 1)
-theme_override_styles/hover = SubResource("StyleBoxFlat_xo1r3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s2ltd")
 text = "*Restart To finalize changes?"
 
 [node name="Spacer" type="Control" parent="Colors/Palette/Container/VBoxContainer/RestartEditor"]
@@ -334,7 +343,7 @@ layout_mode = 2
 initial_position = 1
 title = "Alert"
 size = Vector2i(500, 300)
-theme_override_styles/panel = SubResource("StyleBoxFlat_30mo1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_or54x")
 
 [node name="Control" type="Control" parent="Colors/PopupPanel"]
 layout_mode = 3
@@ -343,8 +352,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 495.0
-offset_bottom = 295.0
+offset_right = -657.0
+offset_bottom = -353.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -363,7 +372,7 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Alert"
-label_settings = SubResource("LabelSettings_5c0f0")
+label_settings = SubResource("LabelSettings_j2aow")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -387,18 +396,19 @@ text = "Close"
 
 [node name="ColorPickerPopup" type="PopupPanel" parent="Colors"]
 initial_position = 1
-size = Vector2i(298, 576)
+size = Vector2i(298, 506)
 
 [node name="ColorPicker" type="ColorPicker" parent="Colors/ColorPickerPopup"]
-offset_left = 20.0
-offset_top = 12.0
-offset_right = 302.0
-offset_bottom = 580.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 294.0
+offset_bottom = 502.0
 picker_shape = 3
 can_add_swatches = false
 presets_visible = false
 
 [connection signal="request_completed" from="Colors/HTTPRequest" to="Colors/HTTPRequest" method="_on_request_completed"]
+[connection signal="item_activated" from="Colors/Palette/SavedPalettes" to="Colors" method="_on_saved_palettes_item_activated"]
 [connection signal="pressed" from="Colors/Palette/IO/New" to="Colors" method="_on_new_palette_pressed"]
 [connection signal="pressed" from="Colors/Palette/IO/Load" to="Colors" method="_on_load_palette_pressed"]
 [connection signal="pressed" from="Colors/Palette/IO/Delete" to="Colors" method="_on_delete_palette_pressed"]

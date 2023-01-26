@@ -10,7 +10,7 @@ func _enter_tree():
 	dock.get_child(0).my_plugin = self
 	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
 	
-	inspector_palette_plugin = preload("res://addons/PaletteTools/scripts/palette_inspector_script.gd").new(self)
+	inspector_palette_plugin = preload("res://addons/PaletteTools/Scripts/palette_inspector_script.gd").new(self)
 	#inspector_palette_plugin.my_plugin = self
 	add_inspector_plugin(inspector_palette_plugin)
 

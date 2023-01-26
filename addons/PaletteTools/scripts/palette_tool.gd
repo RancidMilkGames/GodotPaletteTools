@@ -19,6 +19,8 @@ var config = ConfigFile.new()
 var config_path = "res://addons/PaletteTools/color_presets.cfg"
 var editing_color_on
 
+signal palette_list_updated
+
 func _ready():
 	load_palettes()
 	_on_new_palette_pressed()
@@ -97,6 +99,7 @@ func save_new_palette():
 	config.save(config_path)
 	
 	load_palettes()
+	palette_list_updated.emit()
 
 
 func _on_save_to_editor_button_pressed():
@@ -171,6 +174,7 @@ func _on_delete_palette_pressed():
 		config.erase_section_key("color_picker", saved_palettes.get_item_text(saved_palettes.get_selected_items()[0]))
 		config.save(config_path)
 	load_palettes()
+	palette_list_updated.emit()
 
 
 func _on_new_palette_pressed():
@@ -183,3 +187,7 @@ func _on_new_palette_pressed():
 func _on_color_picker_color_changed(color):
 	editing_color_on.color = color
 
+
+
+func _on_saved_palettes_item_activated(index):
+	_on_load_palette_pressed()
