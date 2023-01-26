@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1w1huyam8nw1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rqw5"]
+bg_color = Color(0.230315, 0.230315, 0.230315, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.821789, 0.821789, 0.821788, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.303233, 0.303233, 0.303233, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jcc3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t77tn"]
+bg_color = Color(0.839216, 0.839216, 0.839216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykbik"]
+bg_color = Color(0.839216, 0.839216, 0.839216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="custom_picker" type="PopupPanel"]
+initial_position = 2
+title = "Palette Tools Color-Picker"
+size = Vector2i(310, 617)
+visible = true
+content_scale_mode = 1
+content_scale_aspect = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_2rqw5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 305.0
+offset_bottom = 612.0
+
+[node name="ColorPicker" type="ColorPicker" parent="VBoxContainer"]
+layout_mode = 2
+picker_shape = 3
+
+[node name="SavedPalettes" type="ItemList" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_selected_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jcc3n")
+theme_override_styles/selected = SubResource("StyleBoxFlat_t77tn")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_ykbik")
+auto_height = true
+item_count = 1
+same_column_width = true
+item_0/text = "No Palettes"
