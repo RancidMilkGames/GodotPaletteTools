@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cfr7exavov7uw" path="res://addons/PaletteTools/Images/Blank.png" id="1_jr35n"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_nkpbe"]
+[sub_resource type="LabelSettings" id="LabelSettings_0k8v7"]
 font_size = 12
 font_color = Color(0.113725, 0.113725, 0.113725, 1)
 
@@ -55,6 +55,6 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "X"
-label_settings = SubResource("LabelSettings_nkpbe")
+label_settings = SubResource("LabelSettings_0k8v7")
 horizontal_alignment = 1
 vertical_alignment = 1

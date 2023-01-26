@@ -32,7 +32,7 @@ func preview_colors(p_colors):
 		var cs = color_sample.instantiate()
 		cs.get_child(0).color = Color.from_string(pc, Color.RED)
 		cs.get_child(0).get_picker().presets_visible = false
-		cs.get_child(0).get_picker().picker_shape = ColorPicker.SHAPE_HSV_WHEEL
+		cs.get_child(0).get_picker().picker_shape = ColorPicker.SHAPE_OKHSL_CIRCLE
 		cs.get_child(0).get_child(0).pressed.connect(remove_color.bind(cs))
 		color_preview.add_child(cs)
 		
@@ -154,6 +154,8 @@ func add_color_to_palette():
 	color_preview.add_child(cs)
 	color_preview.move_child(cs, -2)
 	editing_color_on = cs.get_child(0)
+	cs.get_child(0).get_picker().presets_visible = false
+	cs.get_child(0).get_picker().picker_shape = ColorPicker.SHAPE_OKHSL_CIRCLE
 	cs.get_child(0).get_child(0).pressed.connect(remove_color.bind(cs))
 	col_pick_popup.show()
 
