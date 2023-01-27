@@ -12,7 +12,8 @@ config_version=5
 
 config/name="PaletteTools"
 config/features=PackedStringArray("4.0", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="res://addons/PaletteTools/icon.png"
+config/icon="res://addons/PaletteTools/icon.png"
 
 [editor_plugins]
 

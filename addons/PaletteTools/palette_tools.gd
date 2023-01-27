@@ -3,6 +3,7 @@ extends EditorPlugin
 
 var dock
 var inspector_palette_plugin
+var script_editor
 
 
 func _enter_tree():
@@ -11,8 +12,9 @@ func _enter_tree():
 	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
 	
 	inspector_palette_plugin = preload("res://addons/PaletteTools/Scripts/palette_inspector_script.gd").new(self)
-	#inspector_palette_plugin.my_plugin = self
 	add_inspector_plugin(inspector_palette_plugin)
+	
+	get_editor_interface().edit_node(get_editor_interface().get_selection().get_selected_nodes()[0])
 
 
 func _exit_tree():
@@ -20,7 +22,6 @@ func _exit_tree():
 	dock.free()
 	
 	remove_inspector_plugin(inspector_palette_plugin)
-	# inspector_palette_plugin.free()
 
 func _get_plugin_icon():
 	return preload("res://addons/PaletteTools/icon.png")

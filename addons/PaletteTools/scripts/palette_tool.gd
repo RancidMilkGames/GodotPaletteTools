@@ -10,6 +10,7 @@ extends Control
 @onready var p_name_text = $Palette/Info/PaletteName/LineEdit
 @onready var p_author_text = $Palette/Info/Author/LineEdit
 @onready var saved_palettes = $Palette/SavedPalettes
+@onready var clear_preview_button = $Palette/HBoxContainer/Clear
 @onready var col_pick_popup: PopupPanel = get_parent().get_node("Colors/ColorPickerPopup")
 var add_color_scene: PackedScene = preload("res://addons/PaletteTools/Scenes/plus_box.tscn")
 var color_sample = preload("res://addons/PaletteTools/Scenes/color_sample.tscn")
@@ -42,10 +43,14 @@ func preview_colors(p_colors):
 	color_preview.add_child(add_box)
 	add_box.get_child(0).pressed.connect(add_color_to_palette)
 	
+	await get_tree().create_timer(.01).timeout
+	
 	if color_preview.get_child_count() > 2:
 		editor_swatch_save.visible = true
+		clear_preview_button.visible = true
 	else:
 		editor_swatch_save.visible = false
+		clear_preview_button.visible = false
 
 
 func _on_line_edit_text_submitted(new_text):
@@ -154,6 +159,7 @@ func _on_load_palette_pressed():
 func add_color_to_palette():
 	var cs = color_sample.instantiate()
 	editor_swatch_save.visible = true
+	clear_preview_button.visible = true
 	color_preview.add_child(cs)
 	color_preview.move_child(cs, -2)
 	editing_color_on = cs.get_child(0)
@@ -167,6 +173,7 @@ func remove_color(obj):
 	obj.queue_free()
 	if color_preview.get_child_count() < 3:
 		editor_swatch_save.visible = false
+		clear_preview_button.visible = false
 
 
 func _on_delete_palette_pressed():
@@ -191,3 +198,10 @@ func _on_color_picker_color_changed(color):
 
 func _on_saved_palettes_item_activated(index):
 	_on_load_palette_pressed()
+
+
+func _on_clear_pressed():
+	p_name_text.text = ""
+	p_author_text.text = ""
+	preview_colors([])
+
