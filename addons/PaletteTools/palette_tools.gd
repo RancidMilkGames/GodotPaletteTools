@@ -14,7 +14,8 @@ func _enter_tree():
 	inspector_palette_plugin = preload("res://addons/PaletteTools/Scripts/palette_inspector_script.gd").new(self)
 	add_inspector_plugin(inspector_palette_plugin)
 	
-	get_editor_interface().edit_node(get_editor_interface().get_selection().get_selected_nodes()[0])
+	if get_editor_interface().get_selection().get_selected_nodes().size() > 0:
+		get_editor_interface().edit_node(get_editor_interface().get_selection().get_selected_nodes()[0])
 
 
 func _exit_tree():
