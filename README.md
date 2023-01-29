@@ -17,7 +17,9 @@ working)
 # Future
 
 With the release of version 1.3, there are no hard update plans. Possible updates might include:
+
 [ ] Theme integration of some sort
+
 [ ] The ability to mass convert one color in the project to another
 
 # Notes

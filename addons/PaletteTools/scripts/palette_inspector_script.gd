@@ -20,7 +20,7 @@ func _init(plugin):
 	
 	var col_picker = my_picker.get_child(0).get_child(0).get_child(0)
 	var preset_settings = my_plugin.get_editor_interface().get_editor_settings().get_project_metadata("color_picker", "presets", Color.WHITE)
-	if preset_settings != Color.WHITE:
+	if preset_settings is Array:
 		for color in preset_settings:
 			col_picker.add_preset(color)
 	
