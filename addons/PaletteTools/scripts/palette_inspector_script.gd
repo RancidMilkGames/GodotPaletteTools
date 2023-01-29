@@ -19,8 +19,10 @@ func _init(plugin):
 	load_palettes()
 	
 	var col_picker = my_picker.get_child(0).get_child(0).get_child(0)
-	for color in my_plugin.get_editor_interface().get_editor_settings().get_project_metadata("color_picker", "presets"):
-		col_picker.add_preset(color)
+	var preset_settings = my_plugin.get_editor_interface().get_editor_settings().get_project_metadata("color_picker", "presets", Color.WHITE)
+	if preset_settings != Color.WHITE:
+		for color in preset_settings:
+			col_picker.add_preset(color)
 	
 	editor_inspector = my_plugin.get_editor_interface().get_inspector()
 
