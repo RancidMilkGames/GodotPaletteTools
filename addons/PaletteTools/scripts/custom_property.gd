@@ -21,7 +21,11 @@ func _init(cust_palette, obj, named = null):
 
 func resource_prop(path, prop):
 	if prop.get(path):
-		property_control.color = prop.get(path)
+		var p = prop.get(path)
+		if p is Vector4:
+			property_control.color = Color(p.x, p.y, p.z, p.w)
+		else:
+			property_control.color = p
 	else:
 		property_control.color = Color.WHITE
 
