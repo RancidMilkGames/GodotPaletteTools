@@ -27,7 +27,7 @@ func _init(plugin: PalettePlugin) -> void:
 func initial_palette():
 	var col_picker := my_picker.color_picker as ColorPicker
 	var editor_settings := my_plugin.get_editor_interface().get_editor_settings()
-	var preset_settings := editor_settings.get_project_metadata("color_picker", "presets")
+	var preset_settings := editor_settings.get_project_metadata("color_picker", "presets", [])
 	if preset_settings:
 		for color: String in preset_settings:
 			col_picker.add_preset(Color(color))

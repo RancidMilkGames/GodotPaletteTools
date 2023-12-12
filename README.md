@@ -4,11 +4,11 @@ This is a small addon that allows for easy color palette integration in Godot 4.
 
 ## Setup
 
+**Errors will appear in the output console when you first add the plugin to a project, and you must restart the project before it will work!!!** Many Godot plugins do this and they shouldn't appear on future loads, and are safe to ignore. If for some reason it's not working after you restart the project, open an issue in the [repo](https://github.com/RancidMilkGames/GodotPaletteTools).
+
 Copy either the entire "addons" folder or the folder inside the "addons" folder from this project into your own. If you don't have an addons folder, make one in the project root.
 
 **Addon will appear in the same dock as the inspector/node/history tabs**(Usually on the right side of the screen). You may have to scroll to see it.
-
-**Errors might appear in the output console when you first add the plugin to a project.** Many Godot plugins do this and they shouldn't appear on future loads, and are safe to ignore. If for some reason it's not working when first added, you can try to restart the project and see if that fixes it. If something still isn't working after you've added the plugin and restarted Godot, open an issue in the [repo](https://github.com/RancidMilkGames/GodotPaletteTools).
 
 ## USE
 
