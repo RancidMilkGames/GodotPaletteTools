@@ -2,12 +2,14 @@ extends EditorProperty
 
 signal mouse_released
 
-var property_control = preload("res://addons/PaletteTools/Scenes/custom_palette.tscn").instantiate()
-var updating = false
-var custom_palette
+const CustomPalette := preload("res://addons/PaletteTools/Scripts/custom_picker.gd")
+
+var property_control := preload("res://addons/PaletteTools/Scenes/custom_palette.tscn").instantiate()
+var updating := false
+var custom_palette: CustomPalette
 
 
-func _init(cust_palette, obj, named = null):
+func _init(cust_palette: CustomPalette, obj: Object, named = null) -> void:
 	custom_palette = cust_palette
 	if named and obj[named]:
 		property_control.color = obj[named]
@@ -19,9 +21,9 @@ func _init(cust_palette, obj, named = null):
 	resource_selected.connect(resource_prop)
 
 
-func resource_prop(path, prop):
+func resource_prop(path: String, prop: Resource) -> void:
 	if prop.get(path):
-		var p = prop.get(path)
+		var p := prop.get(path)
 		if p is Vector4:
 			property_control.color = Color(p.x, p.y, p.z, p.w)
 		else:
@@ -30,7 +32,7 @@ func resource_prop(path, prop):
 		property_control.color = Color.WHITE
 
 
-func _on_button_pressed():
+func _on_button_pressed() -> void:
 	if not custom_palette:
 		push_warning("Error in Palette Tools addon: If the \"Palette Tools\" addon was just activated, " +
 		"please select a different node before trying to edit color properties of this one. " +
@@ -39,23 +41,23 @@ func _on_button_pressed():
 		"on and off. If the problem persists, you may need to disable the addon. If this happens, " +
 		"please report any relevant info so a fix can be made. Thanks!")
 		return
-	custom_palette.show()
-	custom_palette.color_picker.color = get_edited_object()[get_edited_property()] #get_child(0).get_child(0).get_node("ColorPicker").color = get_edited_object()[get_edited_property()]
+	custom_palette.popup(Rect2(get_global_mouse_position() - Vector2(size.x, (size.y * 20)), size))
+	custom_palette.color_picker.color = get_edited_object()[get_edited_property()]
 	custom_palette.popup_hide.connect(cust_palette_closed, CONNECT_ONE_SHOT)
-	custom_palette.color_picker.color_changed.connect(cust_palette_changed) #get_child(0).get_child(0).get_node("ColorPicker").color_changed.connect(cust_palette_changed)
+	custom_palette.color_picker.color_changed.connect(cust_palette_changed)
 
 
-func cust_palette_changed(new_color):
+func cust_palette_changed(new_color: Color) -> void:
 	property_control.color = new_color
 
 
-func cust_palette_closed():
-	custom_palette.get_child(0).get_child(0).get_node("ColorPicker").color_changed.disconnect(cust_palette_changed)
-	property_control.color = custom_palette.get_child(0).get_child(0).get_node("ColorPicker").color
+func cust_palette_closed() -> void:
+	custom_palette.color_picker.color_changed.disconnect(cust_palette_changed)
+	property_control.color = custom_palette.color_picker.color
 	emit_changed(get_edited_property(), property_control.color)
 
 
-func _update_property():
+func _update_property() -> void:
 	if get_edited_object() and get_edited_object()[get_edited_property()]:
 		property_control.color = get_edited_object()[get_edited_property()]
 	else:

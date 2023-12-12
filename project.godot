@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="PaletteTools"
-config/features=PackedStringArray("4.0", "Mobile")
-boot_splash/image="res://addons/PaletteTools/icon.png"
+config/description="An addon for managing color palettes in Godot"
+config/version="1.6.0"
+config/tags=PackedStringArray("plugin", "tool")
+config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/use_filter=false
 config/icon="res://addons/PaletteTools/icon.png"
 

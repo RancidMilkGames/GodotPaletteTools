@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://xj8jb4l74mf"]
+
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/browse_palette_preview.gd" id="1_j460a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4ruc"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.435294, 0.403922, 0.462745, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qogr7"]
+content_margin_left = 7.0
+content_margin_top = 4.0
+content_margin_right = 7.0
+content_margin_bottom = 4.0
+bg_color = Color(0.713726, 0.572549, 0.403922, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkmub"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0.552941, 0.384314, 0.407843, 1)
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("info_label", "color_container")]
+offset_top = 54.0
+offset_right = 1152.0
+offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4ruc")
+script = ExtResource("1_j460a")
+info_label = NodePath("BrowsePalettePreview/HBoxContainer/Label")
+color_container = NodePath("BrowsePalettePreview/MarginContainer/HFlowContainer")
+
+[node name="BrowsePalettePreview" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BrowsePalettePreview"]
+layout_mode = 2
+
+[node name="PaletteSelect" type="Button" parent="BrowsePalettePreview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_qogr7")
+text = "Import"
+
+[node name="Label" type="Label" parent="BrowsePalettePreview/HBoxContainer"]
+layout_mode = 2
+text = "Palette name by user"
+label_settings = SubResource("LabelSettings_nkmub")
+
+[node name="MarginContainer" type="MarginContainer" parent="BrowsePalettePreview"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="BrowsePalettePreview/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[connection signal="pressed" from="BrowsePalettePreview/HBoxContainer/PaletteSelect" to="." method="_on_palette_select_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ua52pdokny1t"
-path="res://.godot/imported/spyglass.png-c8a5839ba62e6621291233abb45e1ee9.ctex"
+uid="uid://0361ox86i7ho"
+path="res://.godot/imported/checked.png-d81f80362f72567a0fcdbf6bf355283e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/PaletteTools/Images/spyglass.png"
-dest_files=["res://.godot/imported/spyglass.png-c8a5839ba62e6621291233abb45e1ee9.ctex"]
+source_file="res://addons/PaletteTools/Images/checked.png"
+dest_files=["res://.godot/imported/checked.png-d81f80362f72567a0fcdbf6bf355283e.ctex"]
 
 [params]
 

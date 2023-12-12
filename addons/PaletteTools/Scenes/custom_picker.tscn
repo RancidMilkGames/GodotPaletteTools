@@ -1,6 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://te84lilqmwp0"]
+[gd_scene load_steps=10 format=3 uid="uid://te84lilqmwp0"]
 
 [ext_resource type="Script" path="res://addons/PaletteTools/Scripts/custom_picker.gd" id="1_oxy04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igykn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.745098, 0.584314, 0.360784, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etl6w"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.603922, 0.309804, 0.313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt85f"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.772549, 0.8, 0.721569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lt0k"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.407843, 0.67451, 0.662745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_8u2vs"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_igykn")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_etl6w")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_jt85f")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_1lt0k")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jcc3n"]
 
@@ -18,20 +72,29 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="CustomPicker" type="PopupPanel"]
-initial_position = 2
+[node name="CustomPicker" type="PopupPanel" node_paths=PackedStringArray("color_picker", "saved_palettes", "apply_palette_button")]
+disable_3d = true
 title = "Palette Tools Color-Picker"
-size = Vector2i(355, 680)
+size = Vector2i(1280, 2700)
 visible = true
-content_scale_mode = 1
-content_scale_aspect = 1
+min_size = Vector2i(640, 1350)
+theme = SubResource("Theme_8u2vs")
 script = ExtResource("1_oxy04")
+color_picker = NodePath("ScrollContainer/VBoxContainer/ColorPicker")
+saved_palettes = NodePath("ScrollContainer/VBoxContainer/SavedPalettes")
+apply_palette_button = NodePath("ScrollContainer/VBoxContainer/HBoxContainer/Button")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 351.0
-offset_bottom = 676.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 custom_minimum_size = Vector2(300, 600)
@@ -42,6 +105,7 @@ alignment = 1
 
 [node name="ColorPicker" type="ColorPicker" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+deferred_mode = true
 picker_shape = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]

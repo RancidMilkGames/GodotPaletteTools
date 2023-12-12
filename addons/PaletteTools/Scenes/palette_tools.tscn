@@ -1,10 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://3m5qn5hayqy3"]
+[gd_scene load_steps=42 format=3 uid="uid://3m5qn5hayqy3"]
 
-[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/palette_tool.gd" id="1_1r4u3"]
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/palette_tool.gd" id="1_coeap"]
 [ext_resource type="Script" path="res://addons/PaletteTools/Scripts/get_from_url.gd" id="2_4p84m"]
+[ext_resource type="PackedScene" uid="uid://x40sgfxkrskd" path="res://addons/PaletteTools/Scenes/plus_box.tscn" id="2_85d0j"]
+[ext_resource type="PackedScene" uid="uid://157npdwcov77" path="res://addons/PaletteTools/Scenes/color_sample.tscn" id="2_fn217"]
 [ext_resource type="Shader" path="res://addons/PaletteTools/Shaders/rainbow_shader.gdshader" id="3_gaxkd"]
 [ext_resource type="Texture2D" uid="uid://cx00v0wt38na5" path="res://addons/PaletteTools/Images/Plus.png" id="3_m16i6"]
 [ext_resource type="Texture2D" uid="uid://ua52pdokny1t" path="res://addons/PaletteTools/Images/spyglass.png" id="4_7wo4d"]
+[ext_resource type="LabelSettings" uid="uid://k60qt3dd7ov2" path="res://addons/PaletteTools/Resources/section_label_settings_contrast.tres" id="4_qjnhp"]
+[ext_resource type="Texture2D" uid="uid://kjjgixob83qv" path="res://addons/PaletteTools/Images/checked_4k.png" id="6_iloov"]
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/browse_popup.gd" id="7_ob3x8"]
+[ext_resource type="Texture2D" uid="uid://duot375l3sbkj" path="res://addons/PaletteTools/Images/unchecked_4k.png" id="7_rs6oc"]
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/loading_palettes_screen.gd" id="9_xvc3k"]
+[ext_resource type="Script" path="res://addons/PaletteTools/Scripts/alert_popup_panel.gd" id="11_hklnm"]
+[ext_resource type="PackedScene" uid="uid://xj8jb4l74mf" path="res://addons/PaletteTools/Scenes/browse_palette_preview.tscn" id="13_a5syi"]
 
 [sub_resource type="Theme" id="Theme_igl82"]
 MarginContainer/constants/margin_bottom = 3
@@ -13,6 +22,12 @@ MarginContainer/constants/margin_right = 3
 MarginContainer/constants/margin_top = 3
 TextEdit/font_sizes/font_size = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qvmi"]
+bg_color = Color(0.713726, 0.572549, 0.403922, 1)
+
+[sub_resource type="Theme" id="Theme_8bgoc"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_7qvmi")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g1sn2"]
 shader = ExtResource("3_gaxkd")
 shader_parameter/strength = 0.25
@@ -20,7 +35,9 @@ shader_parameter/speed = 0.25
 shader_parameter/angle = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yeikm"]
-font_size = 45
+font_size = 80
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u67lc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qaos"]
 
@@ -39,7 +56,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g30ga"]
-draw_center = false
+bg_color = Color(0.929412, 0.882353, 0.619608, 0.823529)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -64,6 +81,50 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kk1ek"]
+
+[sub_resource type="Theme" id="Theme_t5g4x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4b8x1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.890196, 0.890196, 0.890196, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inmej"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8dak"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0235294, 0.0235294, 0.0235294, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_rgr51"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_jnb0d"]
+font_size = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6d60a"]
 content_margin_left = 5.0
@@ -106,7 +167,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_ww1rl"]
-font_size = 14
+font_size = 40
 font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdaa4"]
@@ -116,48 +177,51 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ukfu"]
-bg_color = Color(0.160784, 0.160784, 0.160784, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
 [sub_resource type="LabelSettings" id="LabelSettings_0flab"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_26hsa"]
+font_size = 100
+font_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
 [node name="Palette Tools" type="ScrollContainer"]
-custom_minimum_size = Vector2(300, 600)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="Colors" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(300, 600)
+[node name="Colors" type="PanelContainer" parent="." node_paths=PackedStringArray("http", "url", "color_preview", "editor_swatch_save", "restart_editor", "alert", "p_name_text", "p_author_text", "saved_palettes", "clear_preview_button", "col_pick_popup", "browse_popup_panel", "custom_picker_check_box")]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = SubResource("Theme_igl82")
-script = ExtResource("1_1r4u3")
+script = ExtResource("1_coeap")
+http = NodePath("HTTPRequest")
+url = NodePath("Palette/Search/LineEdit")
+color_preview = NodePath("Palette/ColorPreview")
+editor_swatch_save = NodePath("Palette/Container/VBoxContainer/SaveToEditor")
+restart_editor = NodePath("Palette/Container/VBoxContainer/RestartEditor")
+alert = NodePath("AlertPopup")
+p_name_text = NodePath("Palette/Info/PaletteName/LineEdit")
+p_author_text = NodePath("Palette/Info/Author/LineEdit")
+saved_palettes = NodePath("Palette/SavedPalettes")
+clear_preview_button = NodePath("Palette/HBoxContainer/Clear")
+col_pick_popup = NodePath("ColorPickerPopup")
+browse_popup_panel = NodePath("BrowsePopup")
+add_color_scene = ExtResource("2_85d0j")
+color_sample = ExtResource("2_fn217")
+custom_picker_check_box = NodePath("Palette/CustomPicker/CustomPickerCheckBox")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="Colors"]
+[node name="HTTPRequest" type="HTTPRequest" parent="Colors" node_paths=PackedStringArray("colors")]
 download_file = "res://addons/PaletteTools/temp_palette.txt"
 script = ExtResource("2_4p84m")
+colors = NodePath("..")
 
 [node name="Palette" type="VBoxContainer" parent="Colors"]
 layout_mode = 2
+theme = SubResource("Theme_8bgoc")
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="Title" type="Label" parent="Colors/Palette"]
@@ -168,35 +232,57 @@ text = "Palette Tools"
 label_settings = SubResource("LabelSettings_yeikm")
 horizontal_alignment = 1
 
-[node name="PaletteList" type="Label" parent="Colors/Palette"]
+[node name="CustomPicker" type="HBoxContainer" parent="Colors/Palette"]
 layout_mode = 2
-text = "Saved Palettes:"
+alignment = 1
+
+[node name="CustomPickerCheckBox" type="CheckBox" parent="Colors/Palette/CustomPicker"]
+layout_mode = 2
+tooltip_text = "Toggle an extended color picker that can switch palettes"
+theme_override_font_sizes/font_size = 30
+theme_override_icons/checked = ExtResource("6_iloov")
+theme_override_icons/unchecked = ExtResource("7_rs6oc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Colors/Palette/CustomPicker"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u67lc")
+bbcode_enabled = true
+text = "Custom Palette Picker [color=9a4f50](beta)[/color]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PaletteListTitle" type="Label" parent="Colors/Palette"]
+layout_mode = 2
+text = "--- Saved Palettes: ---"
+label_settings = ExtResource("4_qjnhp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SavedPalettes" type="ItemList" parent="Colors/Palette"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_colors/font_selected_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1qaos")
 theme_override_styles/selected = SubResource("StyleBoxFlat_kl4yb")
 theme_override_styles/selected_focus = SubResource("StyleBoxFlat_2u8j5")
 auto_height = true
-item_count = 2
+item_count = 1
 same_column_width = true
-item_0/text = "Nanner 2022"
-item_1/text = "pastel-16"
+item_0/text = "No Palettes"
 
 [node name="IO" type="HBoxContainer" parent="Colors/Palette"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="New" type="TextureButton" parent="Colors/Palette/IO"]
+visible = false
 self_modulate = Color(0.720467, 0.720468, 0.720467, 1)
 texture_filter = 1
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Make a new palette. Erases current preview"
 mouse_default_cursor_shape = 2
@@ -204,61 +290,80 @@ texture_normal = ExtResource("3_m16i6")
 texture_pressed = ExtResource("3_m16i6")
 texture_hover = ExtResource("3_m16i6")
 ignore_texture_size = true
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="Load" type="Button" parent="Colors/Palette/IO"]
 layout_mode = 2
+size_flags_horizontal = 3
 tooltip_text = "Load selected Saved Palette"
 mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 30
 text = "Load"
 
 [node name="Delete" type="Button" parent="Colors/Palette/IO"]
 layout_mode = 2
+size_flags_horizontal = 3
 tooltip_text = "Delete selected Saved Palette"
 mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 30
 text = "Delete"
 
 [node name="SearchTitle" type="Label" parent="Colors/Palette"]
 layout_mode = 2
-text = "Get palette from URL:"
+text = "--- Get from Lospec: ---"
+label_settings = ExtResource("4_qjnhp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Search" type="HBoxContainer" parent="Colors/Palette"]
 layout_mode = 2
-size_flags_horizontal = 4
+
+[node name="LineEdit" type="LineEdit" parent="Colors/Palette/Search"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Lospec Palette URL"
+expand_to_text_length = true
+caret_blink = true
+caret_blink_interval = 0.5
 
 [node name="Search" type="Button" parent="Colors/Palette/Search"]
-custom_minimum_size = Vector2(24, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(80, 4)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_g30ga")
 theme_override_styles/hover = SubResource("StyleBoxFlat_c6ft6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b113t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kk1ek")
 icon = ExtResource("4_7wo4d")
 icon_alignment = 1
+expand_icon = true
 
-[node name="LineEdit" type="LineEdit" parent="Colors/Palette/Search"]
-custom_minimum_size = Vector2(272, 0)
+[node name="BrowsePalettesButton" type="Button" parent="Colors/Palette"]
 layout_mode = 2
-size_flags_horizontal = 4
-placeholder_text = "URL"
-alignment = 1
-expand_to_text_length = true
-caret_blink = true
-caret_blink_interval = 0.5
+tooltip_text = "Browse the most popular Lospec palettes"
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_t5g4x")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_hover_color = Color(0.813258, 0.813258, 0.813258, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_4b8x1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_inmej")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u8dak")
+text = "Browse Palettes"
 
-[node name="Preview" type="Label" parent="Colors/Palette"]
+[node name="PreviewTitle" type="Label" parent="Colors/Palette"]
 layout_mode = 2
-text = "Palette Preview:"
+text = "--- Palette Preview: ---"
+label_settings = ExtResource("4_qjnhp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Info" type="VBoxContainer" parent="Colors/Palette"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 alignment = 1
 
 [node name="PaletteName" type="HBoxContainer" parent="Colors/Palette/Info"]
@@ -267,10 +372,12 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Colors/Palette/Info/PaletteName"]
 layout_mode = 2
 text = "Palette Name:"
+label_settings = SubResource("LabelSettings_rgr51")
 
 [node name="LineEdit" type="LineEdit" parent="Colors/Palette/Info/PaletteName"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
 placeholder_text = "Name"
 caret_blink = true
 caret_blink_interval = 0.5
@@ -281,18 +388,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Colors/Palette/Info/Author"]
 layout_mode = 2
 text = "Author:"
+label_settings = SubResource("LabelSettings_jnb0d")
 
 [node name="LineEdit" type="LineEdit" parent="Colors/Palette/Info/Author"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
 placeholder_text = "Name"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="ColorPreview" type="GridContainer" parent="Colors/Palette"]
+[node name="ColorPreview" type="HFlowContainer" parent="Colors/Palette"]
 layout_mode = 2
-size_flags_horizontal = 4
-columns = 5
+size_flags_vertical = 3
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Colors/Palette"]
 layout_mode = 2
@@ -300,10 +409,11 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Save" type="Button" parent="Colors/Palette/HBoxContainer"]
-custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 tooltip_text = "Save the current preview to Saved Palettes"
 mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 30
 text = "Save Palette"
 
 [node name="Clear" type="Button" parent="Colors/Palette/HBoxContainer"]
@@ -312,13 +422,12 @@ layout_mode = 2
 tooltip_text = "Save the current preview to Saved Palettes"
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.125911, 0.125911, 0.125911, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_6d60a")
 text = "Clear Preview"
 
 [node name="Container" type="MarginContainer" parent="Colors/Palette"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="ColorRect" type="Panel" parent="Colors/Palette/Container"]
 layout_mode = 2
@@ -334,16 +443,15 @@ size_flags_horizontal = 4
 alignment = 1
 
 [node name="Spacer" type="Control" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
-custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="SaveToEditorButton" type="Button" parent="Colors/Palette/Container/VBoxContainer/SaveToEditor"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Replaces the current editor swatches with current palette"
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.933333, 0.772549, 0.509804, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_7ta0s")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ceb4a")
 text = "*Save to Editor's Swatches"
@@ -366,32 +474,34 @@ layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Replaces the current editor swatches with current palette"
 theme_override_colors/font_color = Color(1, 0.435294, 0.364706, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_tdaa4")
 text = "*Restart To finalize changes?"
 
 [node name="Spacer" type="Control" parent="Colors/Palette/Container/VBoxContainer/RestartEditor"]
-custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="PopupPanel" type="PopupPanel" parent="Colors"]
-initial_position = 1
+[node name="AlertPopup" type="PopupPanel" parent="Colors" node_paths=PackedStringArray("alert_text_label")]
+disable_3d = true
 title = "Alert"
+initial_position = 1
 size = Vector2i(500, 300)
-theme_override_styles/panel = SubResource("StyleBoxFlat_8ukfu")
+script = ExtResource("11_hklnm")
+alert_text_label = NodePath("Control/Label")
 
-[node name="Control" type="Control" parent="Colors/PopupPanel"]
+[node name="Control" type="Control" parent="Colors/AlertPopup"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 495.0
-offset_bottom = 295.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 296.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Colors/PopupPanel/Control"]
+[node name="Label" type="Label" parent="Colors/AlertPopup/Control"]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -411,7 +521,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CloseButton" type="Button" parent="Colors/PopupPanel/Control"]
+[node name="CloseButton" type="Button" parent="Colors/AlertPopup/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -426,31 +536,111 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 6
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 text = "Close"
 
 [node name="ColorPickerPopup" type="PopupPanel" parent="Colors"]
+disable_3d = true
+sdf_oversize = 0
 initial_position = 1
-size = Vector2i(298, 506)
+size = Vector2i(306, 514)
+unresizable = false
 
 [node name="ColorPicker" type="ColorPicker" parent="Colors/ColorPickerPopup"]
-offset_left = 20.0
-offset_top = 12.0
+offset_left = 4.0
+offset_top = 4.0
 offset_right = 302.0
 offset_bottom = 510.0
 picker_shape = 3
 can_add_swatches = false
 presets_visible = false
 
+[node name="BrowsePopup" type="Window" parent="Colors" node_paths=PackedStringArray("colors", "browse_http", "preview_container", "alert_popup", "loading_screen")]
+disable_3d = true
+title = "Browse Lospec Palettes"
+initial_position = 2
+size = Vector2i(1000, 600)
+visible = false
+wrap_controls = true
+script = ExtResource("7_ob3x8")
+colors = NodePath("..")
+browse_http = NodePath("HTTPRequest")
+browse_preview_scene = ExtResource("13_a5syi")
+preview_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer")
+alert_popup = NodePath("../AlertPopup")
+loading_screen = NodePath("MarginContainer/Loading")
+
+[node name="MarginContainer" type="MarginContainer" parent="Colors/BrowsePopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Colors/BrowsePopup/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Colors/BrowsePopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Colors/BrowsePopup/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoadMore" type="Button" parent="Colors/BrowsePopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load More"
+
+[node name="Loading" type="ColorRect" parent="Colors/BrowsePopup/MarginContainer" node_paths=PackedStringArray("loading_text")]
+layout_mode = 2
+color = Color(0.878431, 0.878431, 0.878431, 1)
+script = ExtResource("9_xvc3k")
+loading_text = NodePath("Label")
+
+[node name="Label" type="Label" parent="Colors/BrowsePopup/MarginContainer/Loading"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -68.5
+offset_right = 191.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+label_settings = SubResource("LabelSettings_26hsa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Colors/BrowsePopup"]
+
 [connection signal="request_completed" from="Colors/HTTPRequest" to="Colors/HTTPRequest" method="_on_request_completed"]
+[connection signal="toggled" from="Colors/Palette/CustomPicker/CustomPickerCheckBox" to="Colors" method="_on_custom_picker_check_box_toggled"]
 [connection signal="item_activated" from="Colors/Palette/SavedPalettes" to="Colors" method="_on_saved_palettes_item_activated"]
 [connection signal="pressed" from="Colors/Palette/IO/New" to="Colors" method="_on_new_palette_pressed"]
 [connection signal="pressed" from="Colors/Palette/IO/Load" to="Colors" method="_on_load_palette_pressed"]
 [connection signal="pressed" from="Colors/Palette/IO/Delete" to="Colors" method="_on_delete_palette_pressed"]
-[connection signal="pressed" from="Colors/Palette/Search/Search" to="Colors" method="_on_search_pressed"]
 [connection signal="text_submitted" from="Colors/Palette/Search/LineEdit" to="Colors" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Colors/Palette/Search/Search" to="Colors" method="_on_search_pressed"]
+[connection signal="pressed" from="Colors/Palette/BrowsePalettesButton" to="Colors" method="_on_browse_palettes_button_pressed"]
 [connection signal="pressed" from="Colors/Palette/HBoxContainer/Save" to="Colors" method="_on_save_palette_pressed"]
 [connection signal="pressed" from="Colors/Palette/HBoxContainer/Clear" to="Colors" method="_on_clear_pressed"]
 [connection signal="pressed" from="Colors/Palette/Container/VBoxContainer/SaveToEditor/SaveToEditorButton" to="Colors" method="_on_save_to_editor_button_pressed"]
 [connection signal="pressed" from="Colors/Palette/Container/VBoxContainer/RestartEditor/RestartEditorButton" to="Colors" method="_on_restart_editor_pressed"]
-[connection signal="pressed" from="Colors/PopupPanel/Control/CloseButton" to="Colors" method="_on_popup_close_button_pressed"]
+[connection signal="close_requested" from="Colors/AlertPopup" to="Colors/AlertPopup" method="_on_close_requested"]
+[connection signal="pressed" from="Colors/AlertPopup/Control/CloseButton" to="Colors/AlertPopup" method="_on_close_button_pressed"]
 [connection signal="color_changed" from="Colors/ColorPickerPopup/ColorPicker" to="Colors" method="_on_color_picker_color_changed"]
+[connection signal="close_requested" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_close_requested"]
+[connection signal="focus_exited" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_focus_exited"]
+[connection signal="visibility_changed" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_visibility_changed"]
+[connection signal="pressed" from="Colors/BrowsePopup/MarginContainer/VBoxContainer/LoadMore" to="Colors/BrowsePopup" method="_on_load_more_pressed"]
+[connection signal="visibility_changed" from="Colors/BrowsePopup/MarginContainer/Loading" to="Colors/BrowsePopup/MarginContainer/Loading" method="_on_visibility_changed"]
+[connection signal="request_completed" from="Colors/BrowsePopup/HTTPRequest" to="Colors/BrowsePopup" method="_on_http_request_completed"]
