@@ -13,6 +13,7 @@ const BrowsePreview := preload("res://addons/PaletteTools/Scripts/browse_palette
 @export var loading_screen: Control
 
 var current_page: int = 0
+var close_delay: int = 4
 
 
 func get_palette_list() -> void:
@@ -77,4 +78,13 @@ func _on_close_requested() -> void:
 
 
 func _on_focus_exited() -> void:
-	hide()
+	while close_delay > 0:
+		close_delay -= 1
+		await get_tree().create_timer(1).timeout
+	if not has_focus():
+		hide()
+		close_delay = 3
+
+
+func _on_size_changed() -> void:
+	close_delay = 3

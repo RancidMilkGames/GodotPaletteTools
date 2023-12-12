@@ -496,8 +496,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 496.0
-offset_bottom = 296.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -640,6 +640,7 @@ vertical_alignment = 1
 [connection signal="color_changed" from="Colors/ColorPickerPopup/ColorPicker" to="Colors" method="_on_color_picker_color_changed"]
 [connection signal="close_requested" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_close_requested"]
 [connection signal="focus_exited" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_focus_exited"]
+[connection signal="size_changed" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_size_changed"]
 [connection signal="visibility_changed" from="Colors/BrowsePopup" to="Colors/BrowsePopup" method="_on_visibility_changed"]
 [connection signal="pressed" from="Colors/BrowsePopup/MarginContainer/VBoxContainer/LoadMore" to="Colors/BrowsePopup" method="_on_load_more_pressed"]
 [connection signal="visibility_changed" from="Colors/BrowsePopup/MarginContainer/Loading" to="Colors/BrowsePopup/MarginContainer/Loading" method="_on_visibility_changed"]
