@@ -3,7 +3,7 @@ extends EditorInspectorPlugin
 const custom_palette_property := preload("res://addons/PaletteTools/Scripts/custom_property.gd")
 const CustomColorPicker := preload("res://addons/PaletteTools/Scripts/custom_picker.gd")
 const PalettePlugin := preload("res://addons/PaletteTools/palette_tools.gd")
-const custom_palette_picker: PackedScene = preload("res://addons/PaletteTools/Scenes/custom_picker.tscn")
+#const custom_palette_picker: PackedScene #= pre
 
 var my_picker: CustomColorPicker
 var my_plugin: PalettePlugin
@@ -12,15 +12,16 @@ var editor_inspector: EditorInspector
 
 
 func _init(plugin: PalettePlugin) -> void:
+	#custom_palette_picker = load("res://addons/PaletteTools/Scenes/custom_picker.tscn")
 	my_plugin = plugin
-	my_picker = custom_palette_picker.instantiate() as CustomColorPicker
+	my_picker = load("res://addons/PaletteTools/Scenes/custom_picker.tscn").instantiate() as CustomColorPicker
 	my_plugin.dock.add_child(my_picker)
-	
+
 	my_plugin.colors.palette_list_updated.connect(load_palettes)
 	saved_palettes = my_picker.saved_palettes
 	saved_palettes.item_activated.connect(set_palette)
 	my_picker.apply_palette_button.pressed.connect(set_palette.bind(-1))
-	
+
 	editor_inspector = my_plugin.get_editor_interface().get_inspector()
 
 
@@ -70,4 +71,3 @@ func set_palette(palette_num: int) -> void:
 		col_picker.erase_preset(color)
 	for color: Color in my_plugin.colors.my_palettes[palette_num].colors:
 		col_picker.add_preset(color)
-

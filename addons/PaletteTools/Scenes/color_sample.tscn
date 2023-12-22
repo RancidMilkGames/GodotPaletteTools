@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://157npdwcov77"]
 
 [ext_resource type="Script" path="res://addons/PaletteTools/Scripts/color_sample.gd" id="1_8rxjv"]
-[ext_resource type="Texture2D" uid="uid://cfr7exavov7uw" path="res://addons/PaletteTools/Images/Blank.png" id="1_jr35n"]
+[ext_resource type="Texture2D" path="res://addons/PaletteTools/Images/Blank.png" id="1_jr35n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s1xg4"]
 font_size = 20

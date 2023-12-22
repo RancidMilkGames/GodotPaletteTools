@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://x40sgfxkrskd"]
 
-[ext_resource type="Texture2D" uid="uid://cx00v0wt38na5" path="res://addons/PaletteTools/Images/Plus.png" id="1_o5f0x"]
+[ext_resource type="Texture2D" path="res://addons/PaletteTools/Images/Plus.png" id="1_o5f0x"]
 
 [node name="ColorSample" type="MarginContainer"]
 custom_minimum_size = Vector2(50, 50)

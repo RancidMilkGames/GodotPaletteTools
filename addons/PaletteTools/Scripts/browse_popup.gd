@@ -17,7 +17,11 @@ var close_delay: int = 4
 
 
 func get_palette_list() -> void:
-	browse_http.request("https://lospec.com/palette-list/load?colorNumberFilterType=any&colorNumber=8&page=" + str(current_page) + "&tag=&sortingType=downloads")
+	browse_http.request(
+        "https://lospec.com/palette-list/load?colorNumberFilterType=any&colorNumber=8&page="
+        + str(current_page)
+        + "&tag=&sortingType=downloads"
+	)
 	current_page += 1
 
 

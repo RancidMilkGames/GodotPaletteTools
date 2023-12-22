@@ -5,6 +5,7 @@ extends PopupPanel
 @export var saved_palettes: ItemList
 @export var apply_palette_button: Button
 
+
 func _init() -> void:
 	hide()
 	min_size = Vector2i(320, 675)

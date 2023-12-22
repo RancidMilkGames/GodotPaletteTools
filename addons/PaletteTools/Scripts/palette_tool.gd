@@ -31,6 +31,7 @@ var config_path := "res://addons/PaletteTools/color_presets.cfg"
 var editing_color_on: ColorPickerButton
 var four_k_plus: bool = false
 
+
 func _ready() -> void:
 	if DisplayServer.screen_get_size().x > 2000:
 		four_k_plus = true
@@ -38,12 +39,13 @@ func _ready() -> void:
 	_on_new_palette_pressed()
 	iterate_for_control_sizing(self)
 
+
 ## We want to size the plugin to look good in both 1080p and 4k
 func iterate_for_control_sizing(node: Node) -> void:
 	##TODO: See if there's anything to do about this if/else abomination
 	if node is Window:
 		return
-	
+
 	if node is Label and node.label_settings:
 		if "Title" in node.name:
 			if node.name == "Title":
@@ -58,10 +60,10 @@ func iterate_for_control_sizing(node: Node) -> void:
 					node.label_settings.font_size = 25
 		else:
 			if four_k_plus:
-					node.label_settings.font_size = 40
+				node.label_settings.font_size = 40
 			else:
 				node.label_settings.font_size = 22
-	
+
 	if node is CheckBox:
 		if four_k_plus:
 			node.add_theme_icon_override("checked", load("res://addons/PaletteTools/Images/checked_4k.png"))
@@ -75,7 +77,7 @@ func iterate_for_control_sizing(node: Node) -> void:
 			node.add_theme_font_size_override("normal_font_size", 40)
 		else:
 			node.add_theme_font_size_override("normal_font_size", 20)
-	
+
 	if node is Button or node is TextureButton or node is LineEdit or node is ItemList:
 		if (node is Button and node.icon) or node is TextureButton:
 			if four_k_plus:
@@ -108,14 +110,14 @@ func size_color_sample(cs: ColorSample) -> void:
 func preview_colors(p_colors: PackedStringArray) -> void:
 	for c in color_preview.get_children():
 		c.queue_free()
-	
+
 	for pc: String in p_colors:
 		var cs: ColorSample = color_sample.instantiate()
 		var col_pick_btn := cs.color_picker_button as ColorPickerButton
 		col_pick_btn.color = Color.from_string(pc, Color.RED)
 		col_pick_btn.get_picker().presets_visible = false
 		col_pick_btn.get_picker().picker_shape = ColorPicker.SHAPE_OKHSL_CIRCLE
-		
+
 		if four_k_plus:
 			cs.remove_button.size = Vector2i(20, 20)
 		else:
@@ -124,7 +126,7 @@ func preview_colors(p_colors: PackedStringArray) -> void:
 		cs.remove_button.pressed.connect(remove_color.bind(cs))
 		color_preview.add_child(cs)
 		size_color_sample(cs)
-		
+
 	var add_box := add_color_scene.instantiate()
 	if four_k_plus:
 		add_box.custom_minimum_size = Vector2i(95, 95)
@@ -133,9 +135,9 @@ func preview_colors(p_colors: PackedStringArray) -> void:
 	color_preview.add_child(add_box)
 	add_box.update_minimum_size()
 	add_box.get_child(0).pressed.connect(add_color_to_palette)
-	
+
 	await get_tree().create_timer(.01).timeout
-	
+
 	if color_preview.get_child_count() > 2:
 		editor_swatch_save.visible = true
 		clear_preview_button.visible = true
@@ -158,7 +160,7 @@ func load_palettes() -> void:
 	if config.has_section("color_picker"):
 		for sec in config.get_section_keys("color_picker"):
 			my_palettes.append(json.parse_string(config.get_value("color_picker", sec)))
-		
+
 		if my_palettes.size() > 0:
 			saved_palettes.clear()
 			for p in my_palettes:
@@ -182,7 +184,7 @@ func save_new_palette() -> void:
 			continue
 		var color = (c as ColorSample).color_picker_button.color
 		temp_pca.append(color.to_html())
-	
+
 	var json := JSON.new()
 	var new_pal := json.stringify({
 		"name": p_name_text.text,
@@ -191,7 +193,7 @@ func save_new_palette() -> void:
 		})
 	config.set_value("color_picker", p_name_text.text, new_pal)
 	config.save(config_path)
-	
+
 	load_palettes()
 	palette_list_updated.emit()
 
@@ -205,7 +207,7 @@ func _on_save_to_editor_button_pressed() -> void:
 			continue
 		var color := c.get_node("Color").color as Color
 		temp_pca.append(color.to_html())
-		
+
 	settings.set_project_metadata("color_picker", "presets", temp_pca)
 
 
@@ -250,7 +252,12 @@ func add_color_to_palette() -> void:
 	editing_color_on.get_picker().presets_visible = false
 	editing_color_on.get_picker().picker_shape = ColorPicker.SHAPE_OKHSL_CIRCLE
 	cs.remove_button.pressed.connect(remove_color.bind(cs))
-	cs.color_picker_button.get_popup().popup(Rect2(get_global_mouse_position() - Vector2(size.x, (size.y * 20)), cs.color_picker_button.get_popup().size))
+	cs.color_picker_button.get_popup().popup(
+		Rect2(
+			get_global_mouse_position() - Vector2(size.x, size.y * 20),
+			cs.color_picker_button.get_popup().size
+		)
+	)
 
 
 func remove_color(obj: Node) -> void:

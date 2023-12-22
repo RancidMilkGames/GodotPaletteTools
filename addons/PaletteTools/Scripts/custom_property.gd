@@ -4,12 +4,13 @@ signal mouse_released
 
 const CustomPalette := preload("res://addons/PaletteTools/Scripts/custom_picker.gd")
 
-var property_control := preload("res://addons/PaletteTools/Scenes/custom_palette.tscn").instantiate()
+var property_control: Control
 var updating := false
 var custom_palette: CustomPalette
 
 
 func _init(cust_palette: CustomPalette, obj: Object, named = null) -> void:
+	property_control = load("res://addons/PaletteTools/Scenes/custom_palette.tscn").instantiate()
 	custom_palette = cust_palette
 	if named and obj[named]:
 		property_control.color = obj[named]
@@ -34,12 +35,14 @@ func resource_prop(path: String, prop: Resource) -> void:
 
 func _on_button_pressed() -> void:
 	if not custom_palette:
-		push_warning("Error in Palette Tools addon: If the \"Palette Tools\" addon was just activated, " +
-		"please select a different node before trying to edit color properties of this one. " +
-		"This error happens becuase the inspector was loaded before the addon. If you didn't " +
-		"just activate the addon or start the Godot editor, you can try turning the addon " +
-		"on and off. If the problem persists, you may need to disable the addon. If this happens, " +
-		"please report any relevant info so a fix can be made. Thanks!")
+		push_warning(
+            'Error in Palette Tools addon: If the "Palette Tools" addon was just activated, '
+            + "please select a different node before trying to edit color properties of this one. "
+            + "This error happens becuase the inspector was loaded before the addon. If you didn't "
+            + "just activate the addon or start the Godot editor, you can try turning the addon "
+            + "on and off. If the problem persists, you may need to disable the addon. If this happens, "
+            + "please report any relevant info so a fix can be made. Thanks!"
+		)
 		return
 	custom_palette.popup(Rect2(get_global_mouse_position() - Vector2(size.x, (size.y * 20)), size))
 	custom_palette.color_picker.color = get_edited_object()[get_edited_property()]

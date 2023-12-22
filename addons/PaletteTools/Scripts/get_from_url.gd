@@ -23,9 +23,7 @@ func _on_request_completed(result: int, response_code: int, headers: PackedStrin
 	searching = false
 	var json := FileAccess.get_file_as_string(download_file)
 	var json_obj := JSON.parse_string(json)
-	
+
 	colors.preview_colors(json_obj.colors)
 	colors.p_name_text.text = json_obj.name
 	colors.p_author_text.text = json_obj.author
-
-
