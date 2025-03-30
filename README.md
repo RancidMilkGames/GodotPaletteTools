@@ -54,8 +54,9 @@ Godot will automatically activate the addon if you used the previously mentioned
 
 I consider this plugin mostly done, but still use it regularly, so if Godot has any breaking changes that affect it, those will probably be addressed. It also might get the occasional new feature. Some current thoughts are:
 
-- [ ] Theme integration of some sort
-- [ ] The ability to mass convert one color in the project to another
+- [ ] Might make use of the new `ColorPalette` Resource in Godot for saving palettes.
+- [ ] Theme integration of some sort.
+- [ ] The ability to mass convert one color in the project to another.
 
 ## Notes
 

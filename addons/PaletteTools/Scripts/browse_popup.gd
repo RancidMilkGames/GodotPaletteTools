@@ -1,11 +1,11 @@
 @tool
 extends Window
 
-const ColorPalette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
+const Palette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
 const Alert := preload("res://addons/PaletteTools/Scripts/alert_popup_panel.gd")
 const BrowsePreview := preload("res://addons/PaletteTools/Scripts/browse_palette_preview.gd")
 
-@export var colors: ColorPalette
+@export var colors: Palette
 @export var browse_http: HTTPRequest
 @export var browse_preview_scene: PackedScene
 @export var preview_container: Control
@@ -18,9 +18,9 @@ var close_delay: int = 4
 
 func get_palette_list() -> void:
 	browse_http.request(
-        "https://lospec.com/palette-list/load?colorNumberFilterType=any&colorNumber=8&page="
-        + str(current_page)
-        + "&tag=&sortingType=downloads"
+		"https://lospec.com/palette-list/load?colorNumberFilterType=any&colorNumber=8&page="
+		+ str(current_page)
+		+ "&tag=&sortingType=downloads"
 	)
 	current_page += 1
 

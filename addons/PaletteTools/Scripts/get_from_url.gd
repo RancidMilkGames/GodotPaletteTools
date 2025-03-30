@@ -1,9 +1,9 @@
 @tool
 extends HTTPRequest
 
-const ColorPalette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
+const Palette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
 
-@export var colors: ColorPalette
+@export var colors: Palette
 
 var searching := false
 

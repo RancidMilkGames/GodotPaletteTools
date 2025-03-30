@@ -1,12 +1,12 @@
 @tool
 extends Control
 
-const ColorPalette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
+const Palette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
 
 @export var info_label: Label
 @export var color_container: Control
 
-var colors: ColorPalette
+var colors: Palette
 var palette_obj: Dictionary
 
 

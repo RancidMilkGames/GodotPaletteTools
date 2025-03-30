@@ -1,12 +1,12 @@
 @tool
 extends EditorPlugin
 
-const ColorPalette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
+const Palette := preload("res://addons/PaletteTools/Scripts/palette_tool.gd")
 const CustomPickerPlugin := preload("res://addons/PaletteTools/Scripts/palette_inspector_script.gd")
 
 var dock: Control
 var inspector_palette_plugin: CustomPickerPlugin
-var colors: ColorPalette
+var colors: Palette
 var config := ConfigFile.new()
 var config_path := "res://addons/PaletteTools/color_presets.cfg"
 var max_first_load_tries := 100
@@ -49,7 +49,7 @@ func _enter_tree() -> void:
 			return
 
 	dock = load("res://addons/PaletteTools/Scenes/palette_tools.tscn").instantiate() as Control
-	colors = dock.get_node("Colors") as ColorPalette
+	colors = dock.get_node("Colors") as Palette
 	inspector_palette_plugin = load("res://addons/PaletteTools/Scripts/palette_inspector_script.gd").new(self)
 
 	colors.my_plugin = self
