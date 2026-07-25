@@ -1,5 +1,22 @@
 # Godot 4 Palette Tools
 
+<table align="center">
+  <thead>
+    <tr>
+      <td align="center">
+        :warning: Notice
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        Note: No longer needed for newer engine versions as the same functionality is now built into the editor.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 This is a small addon that allows for easy color palette integration in Godot 4. Quickly Create/Download palettes. Load/Save for use any time. Comes with the ability to quickly switch the editor's color-picker swatches as well as a custom color picker that can switch between palettes on demand. Download option currently supports Lospec palettes.
 
 ## Setup
